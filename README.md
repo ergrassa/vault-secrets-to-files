@@ -2,14 +2,8 @@
 An action that puts Hachicorp vault secrets to files
 
 # Usage
-    runs-on: ubuntu-latest
-    name: test job
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Action
-        uses: ./
-        id: act
+- name: Get secrets from hachicorp kv vault
+  uses: ergrassa/vault-secrets-to-files@v1.0
         with:
           url: '${{ secrets.URL }}'
           token: '${{ secrets.TOKEN }}'
