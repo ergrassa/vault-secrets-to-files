@@ -1,0 +1,23 @@
+# action.yml
+name: 'Get secrets from hachicorp kv vault'
+description: 'Gets secrets'
+inputs:
+  url:
+    description: 'Base url to vault, without /v1 part'
+    required: true
+  token:
+    description: 'Access token to vault'
+    required: true
+  engine:
+    description: 'Name of secret engine'
+    required: true
+  path:
+    description: 'Base path for output'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.engine }}
+    - ${{ inputs.token }}
+    - ${{ inputs.url }}
+    - ${{ inputs.path }}
