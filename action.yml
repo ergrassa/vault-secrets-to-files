@@ -1,5 +1,5 @@
 # action.yml
-name: 'Get secrets from hachicorp kv vault'
+name: 'Get secrets from hachicorp KV vault'
 description: 'Gets secrets'
 author: 'ergrassa'
 branding:  
@@ -22,8 +22,6 @@ runs:
   steps:
     - run: |
         mkdir -p ${{ inputs.path }}
-        pip install PyYAML
-        pip install requests
         python ./main.py ${{ inputs.engine }} ${{ inputs.token }} ${{ inputs.url }} ${{ inputs.path }}
       shell: bash
 
