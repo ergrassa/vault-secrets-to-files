@@ -18,10 +18,12 @@ inputs:
   path:
     description: 'Base path for output'
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
-  args:
-    - ${{ inputs.engine }}
-    - ${{ inputs.token }}
-    - ${{ inputs.url }}
-    - ${{ inputs.path }}
+  using: 'composite'
+  steps:
+    - run: |
+        mkdir -p ${{ inputs.path }}
+        pip install PyYAML
+        pip install requests
+        python ./main.py ${{ inputs.engine }} ${{ inputs.token }} ${{ inputs.url }} ${{ inputs.path }}
+      shell: bash
+
