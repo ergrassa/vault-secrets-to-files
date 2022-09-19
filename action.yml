@@ -1,8 +1,9 @@
 # action.yml
 name: 'Get secrets from hachicorp KV vault'
 description: 'Gets secrets'
-icon: arrow-down-right
-color: red
+branding:
+  icon: arrow-down-right
+  color: red
 inputs:
   url:
     description: 'Base url to vault, without /v1 part'
