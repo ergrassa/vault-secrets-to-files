@@ -22,6 +22,6 @@ runs:
   steps:
     - run: |
         mkdir -p ${{ inputs.path }}
-        python ./main.py ${{ inputs.engine }} ${{ inputs.token }} ${{ inputs.url }} ${{ inputs.path }}
+        python main.py ${{ inputs.engine }} ${{ inputs.token }} ${{ inputs.url }} ${{ inputs.path }}
       shell: bash
 
