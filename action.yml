@@ -16,10 +16,5 @@ inputs:
   path:
     description: 'Base path for output'
 runs:
-  using: 'composite'
-  steps:
-    - run: |
-        mkdir -p ${{ inputs.path }}
-        python main.py ${{ inputs.engine }} ${{ inputs.token }} ${{ inputs.url }} ${{ inputs.path }}
-      shell: bash
-
+  using: 'docker'
+  image: 'docker://ergrassa/vault-secrets-to-files:latest'
