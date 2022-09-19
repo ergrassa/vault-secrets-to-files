@@ -19,3 +19,8 @@ inputs:
 runs:
   using: 'docker'
   image: 'docker://ergrassa/vault-secrets-to-files:latest'
+  args:
+    - ${{ inputs.engine }}
+    - ${{ inputs.token }}
+    - ${{ inputs.url }}
+    - ${{ inputs.path }}
