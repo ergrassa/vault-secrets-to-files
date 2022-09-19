@@ -1,5 +1,5 @@
 # vault-secrets-to-files
-An action that puts Hachicorp vault secrets to files
+A composite action that puts Hachicorp vault secrets to files
 
 # Usage
     - name: Get secrets from hachicorp kv vault
