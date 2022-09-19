@@ -85,20 +85,20 @@ for s in secrets:
     output = output.replace('///', '/').replace('//', '/')
     data = remove_special(data)
     if stype == 'env':
-        write_env(data, f"{output}{sname}")
+        write_env(data, f"{output}/{sname}")
     elif stype == 'file':
         if data['data'].startswith('data:application/octet-stream;base64,'):
             sname = data['filename']
-            write_file(data['data'].replace('data:application/octet-stream;base64,',''), f"{output}{sname}")
+            write_file(data['data'].replace('data:application/octet-stream;base64,',''), f"{output}/{sname}")
     elif stype == 'yaml' or stype == 'yml':
-        write_yaml(data, f"{output}{sname}")
+        write_yaml(data, f"{output}/{sname}")
     elif stype == 'text' or stype == 'txt':
-        write_txt(data, f"{output}{sname}")
+        write_txt(data, f"{output}/{sname}")
     else:
-        write_json(data, f"{output}{sname}")
+        write_json(data, f"{output}/{sname}")
     summary[s] = {
         'type': stype,
-        'file': f"{output}{sname}"
+        'file': f"{output}/{sname}"
     }
 if debug == 'yes':
     for k, v in summary.items():
