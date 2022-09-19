@@ -14,7 +14,8 @@ A composite action that puts Hachicorp vault secrets to files
 - **`engine`** is name of KV engine
 - **`token`** is token that have at least _read_ access policy to the secret
 - **`path`** _(optional)_ is base path where to put files, like `'/envs'`
-- **`debug`** _(optional)_ if set to `'yes'` — will produce an output showing secret names, types and output path (values will be not exposed, only keys)
+- **`debug`** _(optional)_ if set to `'yes'` — will produce an output showing secret names, types and output path (values will be not exposed, only keys)![image](https://user-images.githubusercontent.com/18679372/191058590-daab85ed-7fa2-4ad7-a2d3-1fda4b121f89.png)
+
 
 # Secrets special keys
 - **`__filename__`** is file name to save that secrets, like `my_env_file.env`
