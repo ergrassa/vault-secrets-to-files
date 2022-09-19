@@ -4,7 +4,6 @@ import json
 import yaml
 import requests
 import base64
-import pandas as pd
 
 engine = sys.argv[1]
 token = sys.argv[2]
