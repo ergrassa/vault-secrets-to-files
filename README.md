@@ -9,10 +9,12 @@ A composite action that puts Hachicorp vault secrets to files
               token: '${{ secrets.TOKEN }}'
               engine: '${{ secrets.KV }}'
               path: 'somedir'
+              debug: 'no'
 - **`url`** is url of your vault, like `'http://your-vault.example.com'`
 - **`engine`** is name of KV engine
 - **`token`** is token that have at least _read_ access policy to the secret
 - **`path`** _(optional)_ is base path where to put files, like `'/envs'`
+- **`debug`** _(optional)_ if set to `'yes'` — will produce an output showing secret names, types and output path (values will be not exposed, only keys)
 
 # Secrets special keys
 - **`__filename__`** is file name to save that secrets, like `my_env_file.env`
