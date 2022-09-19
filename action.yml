@@ -19,7 +19,5 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - run: ls -alhR $GITHUB_ACTION_PATH/
-      shell: bash
     - run: python $GITHUB_ACTION_PATH/main.py ${{ inputs.engine }} ${{ inputs.token }} ${{ inputs.url }} ${{ inputs.path }}
       shell: bash

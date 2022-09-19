@@ -4,6 +4,8 @@ import json
 import yaml
 import requests
 import base64
+import tabulate
+import pandas as pd
 
 engine = sys.argv[1]
 token = sys.argv[2]
@@ -59,7 +61,7 @@ def write_file(data:dict, dest:str):
 r = requests.request('LIST',f"{vault}/v1/{engine}/metadata", headers=headers)
 secrets = json.loads(r.text)['data']['keys']
 
-
+summary = {}
 for s in secrets:
     r = requests.request('GET', f"{vault}/v1/{engine}/data/{s}", headers=headers)
     data = json.loads(r.text)['data']['data']
@@ -81,14 +83,19 @@ for s in secrets:
     output = output.replace('///', '/').replace('//', '/')
     data = remove_special(data)
     if stype == 'env':
-        write_env(data, f"{output}/{sname}")
+        write_env(data, f"{output}{sname}")
     elif stype == 'file':
         if data['data'].startswith('data:application/octet-stream;base64,'):
-            write_file(data['data'].replace('data:application/octet-stream;base64,',''), f"{output}/{data['filename']}")
+            sname = data['filename']
+            write_file(data['data'].replace('data:application/octet-stream;base64,',''), f"{output}{sname}")
     elif stype == 'yaml' or stype == 'yml':
-        write_yaml(data, f"{output}/{sname}")
+        write_yaml(data, f"{output}{sname}")
     elif stype == 'text' or stype == 'txt':
-        write_txt(data, f"{output}/{sname}")
+        write_txt(data, f"{output}{sname}")
     else:
-        write_json(data, f"{output}/{sname}")
-    print(f"{s}\t\t{sname}\t\t{stype}\t\t{basepath}\t\t{output}")
+        write_json(data, f"{output}{sname}")
+    summary[s] = {
+        'type': stype,
+        'file': f"{output}{sname}"
+    }
+print(tabulate.tabulate(pd.DataFrame(summary).T, headers=['type', 'file']))
