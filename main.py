@@ -13,6 +13,10 @@ try:
     basepath = sys.argv[4]
 except:
     basepath = './'
+try:
+    debug = sys.argv[5]
+except:
+    debug = 'no'
 
 headers = {
     'X-Vault-Token': token
@@ -97,4 +101,6 @@ for s in secrets:
         'type': stype,
         'file': f"{output}{sname}"
     }
-print(pd.DataFrame(summary).T)
+if debug == 'yes':
+    for k, v in summary.items():
+        print(f"{k:<30} {v['type']:<10} {v['file']:<60}")

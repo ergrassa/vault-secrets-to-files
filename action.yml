@@ -16,8 +16,10 @@ inputs:
     required: true
   path:
     description: 'Base path for output'
+  debug:
+    description: 'Output secret name, type and output file'
 runs:
   using: 'composite'
   steps:
-    - run: python $GITHUB_ACTION_PATH/main.py ${{ inputs.engine }} ${{ inputs.token }} ${{ inputs.url }} ${{ inputs.path }}
+    - run: python $GITHUB_ACTION_PATH/main.py ${{ inputs.engine }} ${{ inputs.token }} ${{ inputs.url }} ${{ inputs.path }} ${{ inputs.debug }}
       shell: bash
