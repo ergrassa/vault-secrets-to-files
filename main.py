@@ -4,7 +4,6 @@ import json
 import yaml
 import requests
 import base64
-import tabulate
 import pandas as pd
 
 engine = sys.argv[1]
@@ -98,4 +97,4 @@ for s in secrets:
         'type': stype,
         'file': f"{output}{sname}"
     }
-print(tabulate.tabulate(pd.DataFrame(summary).T, headers=['type', 'file']))
+print(pd.DataFrame(summary).T)
