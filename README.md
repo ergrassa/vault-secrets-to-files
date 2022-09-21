@@ -4,12 +4,12 @@ A composite action that puts Hachicorp vault secrets to files
 # Usage
     - name: Get secrets from hachicorp kv vault
       uses: ergrassa/vault-secrets-to-files@v1.0
-            with:
-              url: '${{ secrets.URL }}'
-              token: '${{ secrets.TOKEN }}'
-              engine: '${{ secrets.KV }}'
-              path: 'somedir'
-              debug: 'no'
+      with:
+        url: '${{ secrets.URL }}'
+        token: '${{ secrets.TOKEN }}'
+        engine: '${{ secrets.KV }}'
+        path: 'somedir'
+        debug: 'no'
 - **`url`** is url of your vault, like `'http://your-vault.example.com'`
 - **`engine`** is name of KV engine
 - **`token`** is token that have at least _read_ access policy to the secret
